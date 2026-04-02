@@ -29,6 +29,7 @@ const App: React.FC = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [originalTextExpandedIds, setOriginalTextExpandedIds] = useState<string[]>([]);
   const [formExpandedIds, setFormExpandedIds] = useState<string[]>([]);
+  const [showOriginalFlowchart, setShowOriginalFlowchart] = useState(false);
   const scrollRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   const filteredData = useMemo(() => {
@@ -106,6 +107,25 @@ const App: React.FC = () => {
           </div>
         </div>
         <p className="map-tip">* 각 단계를 클릭하면 상세 설명으로 바로 이동합니다.</p>
+        
+        <div className="original-map-toggle">
+          <button 
+            className="text-toggle-btn form-btn" 
+            onClick={() => setShowOriginalFlowchart(!showOriginalFlowchart)}
+          >
+            {showOriginalFlowchart ? '원본 흐름도 숨기기' : '가이드북 원본 흐름도 보기'}
+          </button>
+        </div>
+
+        {showOriginalFlowchart && (
+          <div className="original-map-container animate-in">
+            <img 
+              src="/forms/flowchart-origin.png" 
+              alt="학교폭력 사안처리 흐름도 원본" 
+              className="form-image"
+            />
+          </div>
+        )}
       </section>
 
       <div className="search-bar">
@@ -203,8 +223,8 @@ const App: React.FC = () => {
         ))}
       </div>
       <footer>
-        <p>© 2026 학교폭력 사안처리 가이드북 스마트 검색 시스템</p>
-      </footer>
+        <p>© 2026 학교폭력 사안처리 가이드북 스마트 검색 시스템 (v1.1)</p>
+      </header>
     </div>
   );
 };

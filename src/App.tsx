@@ -224,7 +224,7 @@ const App: React.FC = () => {
       </div>
       <footer>
         <p>© 2026 학교폭력 사안처리 가이드북 스마트 검색 시스템 (v1.1)</p>
-      </header>
+      </footer>
     </div>
   );
 };
